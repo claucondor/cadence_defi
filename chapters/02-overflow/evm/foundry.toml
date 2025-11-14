@@ -1,0 +1,32 @@
+[profile.default]
+src = "."
+out = "out"
+libs = ["lib"]
+test = "test"
+script = "script"
+
+# Solidity compiler version
+solc_version = "0.8.20"
+
+# Optimizer settings
+optimizer = true
+optimizer_runs = 200
+
+# EVM version
+evm_version = "paris"
+
+# Verbosity of tests
+verbosity = 2
+
+# Gas reports
+gas_reports = ["*"]
+
+# Test coverage
+via_ir = false
+
+[rpc_endpoints]
+mainnet = "https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
+goerli = "https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
+
+[etherscan]
+mainnet = { key = "${ETHERSCAN_API_KEY}" }
