@@ -1,60 +1,77 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.7.0;  // ⚠️ Pre-0.8 = Vulnerable a overflow
+pragma solidity ^0.8.20;
 
 /**
- * BeautyChain (BEC) Vulnerable Token
- * 
+ * BeautyChain (BEC) Vulnerable Token (Simulated with unchecked{})
+ *
  * Este contrato replica el bug del famoso hack de BeautyChain (Abril 2018)
- * donde se crearon 10^58 tokens mediante integer overflow
+ * donde se crearon 10^58 tokens mediante integer overflow.
+ *
+ * NOTA: En Solidity 0.8+, usamos unchecked{} para simular el comportamiento
+ * vulnerable que existía nativamente en Solidity <0.8
  */
 contract VulnerableToken {
-    
+
     mapping(address => uint256) public balances;
     uint256 public totalSupply;
-    
+
     event Transfer(address indexed from, address indexed to, uint256 value);
     event BatchTransfer(address indexed from, uint256 totalAmount);
-    
+
     constructor() {
         totalSupply = 1000000 * 10**18;
         balances[msg.sender] = totalSupply;
     }
-    
+
     /**
      * ❌ VULNERABLE: batchTransfer con overflow bug
-     * 
-     * Este es el código exacto que causó el hack de BeautyChain
+     *
+     * Este es el código que causó el hack de BeautyChain.
+     * Usamos unchecked{} para replicar el comportamiento de Solidity <0.8
      */
     function batchTransfer(address[] memory _receivers, uint256 _value) public returns (bool) {
         uint cnt = _receivers.length;
-        uint256 amount = uint256(cnt) * _value;  // ⚠️ OVERFLOW AQUÍ
-        
+
+        // ⚠️ OVERFLOW AQUÍ (en Solidity <0.8 esto pasaba sin unchecked)
+        uint256 amount;
+        unchecked {
+            amount = uint256(cnt) * _value;  // 2 * 2^255 = 0
+        }
+
         require(cnt > 0 && cnt <= 20);
-        require(_value > 0 && balances[msg.sender] >= amount);
-        
-        balances[msg.sender] = balances[msg.sender] - amount;
-        
+        require(_value > 0 && balances[msg.sender] >= amount);  // 0 <= balance ✓
+
+        unchecked {
+            balances[msg.sender] = balances[msg.sender] - amount;
+        }
+
         for (uint i = 0; i < cnt; i++) {
-            balances[_receivers[i]] = balances[_receivers[i]] + _value;
+            unchecked {
+                balances[_receivers[i]] = balances[_receivers[i]] + _value;
+            }
             emit Transfer(msg.sender, _receivers[i], _value);
         }
-        
+
         emit BatchTransfer(msg.sender, amount);
         return true;
     }
-    
+
     /**
-     * ❌ VULNERABLE: Simple overflow
+     * ❌ VULNERABLE: Simple overflow (wrapped behavior)
      */
     function unsafeAdd(uint256 a, uint256 b) public pure returns (uint256) {
-        return a + b;  // Wraps on overflow
+        unchecked {
+            return a + b;  // Wraps on overflow
+        }
     }
-    
+
     /**
-     * ❌ VULNERABLE: Simple underflow
+     * ❌ VULNERABLE: Simple underflow (wrapped behavior)
      */
     function unsafeSub(uint256 a, uint256 b) public pure returns (uint256) {
-        return a - b;  // Wraps on underflow
+        unchecked {
+            return a - b;  // Wraps on underflow
+        }
     }
 }
 
