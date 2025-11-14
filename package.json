@@ -1,0 +1,23 @@
+{
+  "name": "cadence-defi",
+  "version": "0.1.0",
+  "description": "DeFi protocols built with Cadence on Flow blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "flow test",
+    "emulator": "flow emulator",
+    "deploy": "flow project deploy"
+  },
+  "keywords": [
+    "cadence",
+    "flow",
+    "blockchain",
+    "defi",
+    "smart-contracts"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@onflow/flow-js-testing": "^0.3.0"
+  }
+}
