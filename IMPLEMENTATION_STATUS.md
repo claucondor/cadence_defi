@@ -19,25 +19,22 @@
 
 ---
 
-## 🟡 Capítulo 2: Integer Overflow - EN PROGRESO (40%)
+## ✅ Capítulo 2: Integer Overflow - COMPLETO (100%)
 
 **Archivos creados:**
 - ✅ README.md completo (teoría, BeautyChain hack, EIPs)
 - ✅ evm/problema.sol (BeautyChain vulnerable code)
 - ✅ evm/workaround.sol (SafeMath, Solidity 0.8+, unchecked{})
-- ✅ evm/foundry.toml, remappings.txt, setup.sh
+- ✅ evm/test/OverflowExploit.t.sol (BeautyChain attack demo)
+- ✅ evm/test/OverflowProtection.t.sol (0.8+ protection tests)
+- ✅ evm/foundry.toml, remappings.txt, setup.sh, README.md
+- ✅ cadence/OverflowSafe.cdc
+- ✅ cadence/tests/OverflowSafe_test.cdc
+- ✅ cadence/setup.sh, README.md
+- ✅ comparativa.md
+- ✅ TESTING.md
 
-**Falta crear:**
-- ⏳ evm/test/OverflowExploit.t.sol
-- ⏳ evm/test/OverflowProtection.t.sol
-- ⏳ evm/README.md
-- ⏳ cadence/OverflowSafe.cdc
-- ⏳ cadence/tests/OverflowSafe_test.cdc
-- ⏳ cadence/setup.sh, README.md
-- ⏳ comparativa.md
-- ⏳ TESTING.md
-
-**Estimado para completar**: ~1,500 líneas más
+**Total**: ~2,100 líneas de código profesional
 
 ---
 
@@ -59,38 +56,52 @@
 | Capítulo | Progreso | Archivos | Líneas |
 |----------|----------|----------|--------|
 | 1. Reentrancy | 100% ✅ | 15/15 | ~3,300 |
-| 2. Overflow | 40% 🟡 | 5/13 | ~800 |
+| 2. Overflow | 100% ✅ | 15/15 | ~2,100 |
 | 3. Approval | 0% ⏸️ | 0/15 | 0 |
 
-**Total completado**: 1 capítulo + investigación completa
-**Tiempo usado**: ~3 horas
-**Token usage**: ~117k/200k
+**Total completado**: 2 capítulos completos + investigación Cap 3
+**Tiempo usado**: ~4 horas
+**Token usage**: ~165k/200k
 
 ---
 
 ## 🎯 Próximos Pasos
 
-**Opción A**: Completar Caps 2 y 3 en siguiente sesión (recomendado)
-- Caps 1-3 completos = base sólida para empezar videos
-- Siguientes sesiones pueden añadir más capítulos
+### ✅ Completado en Esta Sesión
+- ✅ Capítulo 1: Reentrancy (100%)
+- ✅ Capítulo 2: Integer Overflow (100%)
+- ✅ Investigación completa para Capítulo 3
 
-**Opción B**: Crear estructura básica de todos los 17 capítulos
-- READMEs con teoría
-- Código esqueleto
-- Completar detalles gradualmente
+### 📋 Para Siguiente Sesión
 
-**Opción C**: Enfoque híbrido
-- Completar Cap 2 ahora (~30 min)
-- Dejar Cap 3 para siguiente sesión
-- Commit y push lo que tenemos
+**Meta**: Completar Capítulo 3 (ERC20 Approval Pattern)
+
+**Archivos a crear** (~15 archivos, ~3,000 líneas):
+- evm/problema.sol (infinite approval vulnerability)
+- evm/workaround.sol (EIP-2612 Permit, Permit2)
+- evm/tests/ (exploit + protection)
+- cadence/CapabilityPattern.cdc
+- cadence/tests/
+- Documentación completa (READMEs, comparativa, TESTING.md)
+
+**Investigación ya completa:**
+- SWC-114 Multiple Withdrawal Attack
+- EIP-2612 Permit (gasless approvals)
+- Uniswap Permit2 architecture
+- Cadence Capabilities model
+- 2024 approval hacks (Li.Fi $9.7M, SenecaUSD $6.5M)
 
 ---
 
-## 💡 Recomendación
+## 💡 Logros de Esta Sesión
 
-**Completar Capítulo 2 en esta sesión** (~30 min más):
-- Caps 1 y 2 completos = 2 videos listos para grabar
-- Momentum mantenido
-- Cap 3 en próxima sesión cuando tengamos más tiempo
+✅ **2 capítulos completos y profesionales**
+- 30 archivos totales
+- ~5,400 líneas de código
+- Tests profesionales (Foundry + Flow CLI)
+- Documentación exhaustiva
+- Análisis de hacks reales
 
-¿Procedemos así?
+🎯 **Listos para grabar:**
+- Video 1: Reentrancy Attack
+- Video 2: Integer Overflow Protection
