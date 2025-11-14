@@ -48,11 +48,13 @@ function batchTransfer(address[] memory _receivers, uint256 _value) public {
 
 #### Cambios Realizados
 ✅ Actualicé los tests para usar `assert()` directamente (más compatible)
-✅ Agregué `flow.json` con configuración del contrato
+✅ Agregué `flow.json` con configuración del contrato en TODOS los capítulos
 
-**Archivos actualizados**:
+**Archivos creados/actualizados**:
+- `chapters/01-reentrancy/cadence/flow.json` - Nueva configuración
 - `chapters/02-overflow/cadence/flow.json` - Nueva configuración
 - `chapters/02-overflow/cadence/tests/OverflowSafe_test.cdc` - Usando `assert()`
+- `chapters/03-approval-pattern/cadence/flow.json` - Nueva configuración
 
 ---
 
