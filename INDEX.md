@@ -42,11 +42,11 @@ Este repositorio documenta patrones comunes de DeFi, explicando:
 - [📁 Ver capítulo](./chapters/03-approval-pattern/)
 
 #### Capítulo 4: NFT Standards Evolution
-- **Problema**: ERC-721 gas costs, lack of batch operations
-- **EVM Workarounds**: ERC-1155 multi-token standard
-- **EIPs Relacionados**: ERC-721, ERC-1155, ERC-998
-- **Solución Cadence**: NFT Resources con ownership nativo
-- **Status**: 🔴 Pendiente
+- **Problema**: ERC-721 gas costs, lack of batch operations, reentrancy vulnerabilities
+- **EVM Workarounds**: ERC-721A (Azuki), ERC-1155 multi-token standard
+- **EIPs Relacionados**: ERC-721, ERC-1155, ERC-998 (Composable NFTs)
+- **Solución Cadence**: NFT Resources con ownership nativo, no reentrancy by design
+- **Status**: 🟢 Completo
 - [📁 Ver capítulo](./chapters/04-nft-standards/)
 
 ---
